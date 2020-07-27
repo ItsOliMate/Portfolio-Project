@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Welcome</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/4.5/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/4.5/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/docs/4.5/assets/img/favicons/favicon.ico">
+<meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+    <!-- Custom styles for this template -->
+     <link href="{% static 'style.css' %}" rel="stylesheet">
+  </head>
+    <body style="background-color: #eaecef;">
+
+      <div id="progressbar"></div>
+      <div id="scrollPath"></div>
+
+      <section>
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div id="particles-js">
+    <div id="example">
+      <div>
+      <img id="photo" src="{% static 'Oliver.jpg' %}" height=295></img>
+      <h1>Oliver Jones</h1>
+      <p>
+        <a href="mailto:oliver@oliver-jones.me.uk" class="btn btn-success my-2"><i style="font-size:20px" class="fa">&#xf0e0;</i> Email me</a>
+        <a href="https://www.linkedin.com/in/oliverjones36" class="btn btn-primary my-2"><i style="font-size:20px" class="fa">&#xf08c;</i> Connect</a>
+      </p>
+      </div>
+    </div>
+    </div>
+  </section>
+
+      <div id="intro">
+
+        <h1>About Me</h1>
+        <hr style="width:90%">
+
+      </div>
+
+      <div class="container">
+
+      <div id="row">
+
+        {% for detail in details.all %}
+
+          <div id="about">
+
+        <p> {{ detail.about }}</p>
+
+
+      </div>
+
+        {% endfor %}
+
+          </div>
+
+      </div>
+
+        <div id="intro">
+
+        <h1>Career History</h1>
+        <hr style="width:90%">
+
+      </div>
+
+      <div class="container">
+
+      <div class="row">
+
+        {% for job in jobs.all %}
+
+        <div class="col-md-4">
+            <div class="card" >
+              <h4>{{ job.title }}</h4>
+              <hr style="width:95%">
+              <p class="small" id="caption">{{ job.startdate }} - {{ job.enddate }} </p>
+              <p>{{ job.summary }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+
+    <div id="intro">
+      <h1>Skills and Experience</h1>
+      <hr style="width:90%">
+    </div>
+
+    <div id="centered">
+
+      <div class="row">
+
+      {% for skill in skills.all %}
+
+        <div id="logos">
+          <img id="myImage" src="{{ skill.logo.url }}" height=100px title="{{ skill.name }}"></img>
+        </div>
+
+        {% endfor %}
+      </div>
+  </div>
+
+  <div id="intro">
+
+      <h1>Education</h1>
+      <hr style="width:90%">
+
+    </div>
+
+    <div class="container">
+
+        {% for education in educations.all %}
+
+        <div id="widecard">
+
+        <h4>{{ education.subject }}</h4>
+        <hr style="width:95%">
+        <p class="small" id="caption">{{ education.type }}<p>
+        <p>{{ education.info }}</p>
+
+      </div>
+
+        {% endfor %}
+
+    </div>
+
+  <div id="intro">
+
+      <h1>Projects</h1>
+      <hr style="width:90%">
+    </div>
+
+    <div class="container">
+
+          {% for project in projects.all %}
+
+          <div id="projects">
+
+          <h4>{{ project.title }}</h4>
+          <hr style="width:95%">
+
+          <p>{{ project.info }}</p>
+
+          <hr style="width:95%">
+
+          <p id="caption">{{ project.codeused }}</p>
+
+        </div>
+
+        <div class='gap'></div>
+
+          {% endfor %}
+
+    </div>
+
+  </div>
+
+</main>
+</section>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+      particlesJS.load('particles-js', '{% static 'particles.json' %}',
+      function(){
+          console.log('particles.json loaded...')
+      })
+  </script>
+  </body>
+</html>
